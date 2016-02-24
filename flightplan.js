@@ -3,8 +3,11 @@ var nconf = require('nconf');
 
 nconf.argv().env().file({ file: 'config.json' });
 
-plan.target('production', nconf.get('application:servers:rps'), {
-
+plan.target('production', {
+  host: nconf.get('application:servers:rps:host'),
+  port: nconf.get('application:servers:rps:port'),
+  username: nconf.get('application:servers:rps:username'),
+  agent: process.env.SSH_AUTH_SOCK
 });
 
 var appDir = 'rps-control';
@@ -36,7 +39,7 @@ plan.local('deploy', function(local) {
 
 // run commands on the target's remote hosts
 plan.remote('deploy', function(remote) {
-  var user = nconf.get('application:servers:rps:username');
+  var user = plan.runtime.target.username;
 
   remote.log('Stopping application');
   remote.failsafe();

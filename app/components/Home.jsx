@@ -4,7 +4,7 @@ let Home = React.createClass({
   render() {
     return (
       <div>
-        <h2>Control your Backpedal!</h2>
+        <h2>Be Kind. Rewind.</h2>
       </div>
     );
   }

@@ -24211,7 +24211,7 @@
 	      _react2.default.createElement(
 	        'h2',
 	        null,
-	        'Control your Backpedal!'
+	        'Be Kind. Rewind.'
 	      )
 	    );
 	  }
